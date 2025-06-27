@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import bg from './assets/background.png';
 import whatsapp from './assets/whatsapp.png';
 
@@ -21,27 +22,48 @@ export default function HeroCarousel() {
 
   return (
     <div className="relative w-full h-[70vh] md:h-[90vh] overflow-hidden">
-      {/* Slides */}
-      {slides.map((img, idx) => (
-        <img
-          key={idx}
-          src={img}
-          alt="slide"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${current === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-        />
-      ))}
-      {/* Overlay Content */}
-      <div className="absolute top-1/4 left-6 md:left-24 z-20 text-left">
-        <h1 className="text-white text-2xl sm:text-3xl md:text-[70px] mb-6 max-w-xs sm:max-w-md md:max-w-2xl leading-tight md:leading-snug drop-shadow-lg  font-normal" >
+      {/* Slides with Framer Motion */}
+      <AnimatePresence initial={false}>
+        {slides.map((img, idx) =>
+          current === idx ? (
+            <motion.img
+              key={idx}
+              src={img}
+              alt="slide"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="absolute inset-0 w-full h-full object-cover z-10"
+            />
+          ) : null
+        )}
+      </AnimatePresence>
+      {/* Overlay Content with Framer Motion */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
+        className="absolute top-1/4 left-6 md:left-24 z-20 text-left"
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
+          className="text-white text-2xl sm:text-3xl md:text-[70px] mb-6 max-w-xs sm:max-w-md md:max-w-2xl leading-tight md:leading-snug drop-shadow-lg font-[Font_2] font-normal"
+        >
           Align Your <br /> Body, Mind and Stars
-        </h1>
-        <a
+        </motion.h1>
+        <motion.a
           href="#services"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
           className="inline-block bg-[#0655A0] hover:bg-blue-800 text-white font-semibold px-6 py-2 rounded transition-colors text-sm md:text-[18px] shadow"
         >
           DISCOVER YOUR PATH
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
       {/* Dots */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
         {slides.map((_, idx) => (

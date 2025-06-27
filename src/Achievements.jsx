@@ -1,3 +1,5 @@
+import React from 'react';
+import { motion } from 'framer-motion';
 import logs4 from './assets/logs1.svg';
 import logs2 from './assets/logs2.svg';
 import logs3 from './assets/logs.svg';
@@ -14,26 +16,45 @@ export default function Achievements() {
   ];
 
   return (
-    <section className="w-full">
+    <motion.section
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      viewport={{ once: true, amount: 0.2 }}
+      className="w-full"
+    >
       <div
         className="w-full bg-cover bg-center min-h-[400px] flex flex-col items-center justify-center px-4 md:px-16 lg:px-24 text-white"
         style={{ backgroundImage: `url(${background})` }}
       >
         {/* Heading */}
-        <div className="text-center mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="text-center mb-6"
+        >
           <h2 className="font-philosopher text-4xl font-semibold mb-2">Achievements</h2>
           <img src={image} alt="decorative underline" className="mx-auto w-36 sm:w-48" />
-        </div>
+        </motion.div>
         {/* Achievements */}
-        <div className="flex flex-wrap justify-center gap-[90px] mt-4">
+        <div className="flex flex-wrap justify-center gap-[40px] md:gap-[90px] mt-4">
           {achievementsData.map((item, idx) => (
-            <div key={idx} className="flex flex-col items-center">
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, delay: idx * 0.15, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="flex flex-col items-center"
+            >
               <img src={item.img} alt="" className='hover:shadow-lg transition-shadow duration-300 scale-[20px] cursor-pointer'/>
               <p className="mt-2 text-sm font-inter text-white">{item.label}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 } 
