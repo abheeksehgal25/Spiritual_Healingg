@@ -2,7 +2,7 @@ import React from 'react';
 import bgSection from './assets/background2.jpg';
 import bgCard from './assets/background3.png';
 import TarrotIcon from './assets/Tarrot.png';
-import numerologyIcon from './assets/numerology.png';
+import numerologyIcon from './assets/Numerology.png';
 import yogaIcon from './assets/Yoga.png';
 import comboIcon from './assets/SpecialCombo.png';
 import line from './assets/line.png';
