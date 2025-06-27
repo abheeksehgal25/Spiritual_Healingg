@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import bg from './assets/background.png';
 import whatsapp from './assets/whatsapp.png';
+// import photo from './assets/photo.png';
 
-const slides = [bg, bg, bg, bg, bg]; // Placeholder: all 5 slides use the same image for now
+const slides = [bg, bg, bg, bg, bg]; // Use the background image for all slides
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
@@ -39,12 +40,14 @@ export default function HeroCarousel() {
           ) : null
         )}
       </AnimatePresence>
+      {/* Overlay for text readability */}
+      <div className="absolute inset-0 bg-black/30 z-20" />
       {/* Overlay Content with Framer Motion */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
-        className="absolute top-1/4 left-6 md:left-24 z-20 text-left"
+        className="absolute top-1/4 left-6 md:left-24 z-30 text-left"
       >
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -65,7 +68,7 @@ export default function HeroCarousel() {
         </motion.a>
       </motion.div>
       {/* Dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
         {slides.map((_, idx) => (
           <button
             key={idx}

@@ -5,11 +5,30 @@ import line from './assets/line.png';
 
 const testimonials = [
   {
-    text: `Thank you so much Sonia for a deeper & insightful session. Got to know closely about the things which I had no idea. Loved exploring about what my life holds for me with your lenses. I will definitely comeback to you for future if I want to know anything about my karmic energy`,
-    name: 'Anonymous',
+    text: `Thank you so much Meenal for a deeper & insightful session. Got to know closely about the things which I had no idea. Loved exploring about what my life holds for me with your lenses. I will definitely comeback to you for future if I want to know anything about my karmic energy`,
+    name: 'Sonia Sharma',
     role: 'Astrologer',
   },
-  // Add more testimonials if needed
+  {
+    text: `Meenal's tarot reading was spot on and gave me so much clarity. Her guidance is gentle yet powerful. Highly recommended for anyone seeking answers!`,
+    name: 'Priya Verma',
+    role: 'Entrepreneur',
+  },
+  {
+    text: `I was amazed by the accuracy of the numerology session. Meenal explained everything so well and made me feel comfortable throughout.`,
+    name: 'Rahul Singh',
+    role: 'Software Engineer',
+  },
+  {
+    text: `The yoga and chakra balancing sessions have truly changed my life. I feel more energetic and positive every day. Thank you, Meenal!`,
+    name: 'Neha Kapoor',
+    role: 'Yoga Enthusiast',
+  },
+  {
+    text: `Special combo offers are a must-try! I felt a shift in my mindset and overall well-being. Meenal is a wonderful guide.`,
+    name: 'Amit Joshi',
+    role: 'Business Owner',
+  },
 ];
 
 export default function ClientsLoveSection() {

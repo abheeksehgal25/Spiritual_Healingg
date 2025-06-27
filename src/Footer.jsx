@@ -94,16 +94,14 @@ export default function Footer() {
             <h3 className="text-lg font-philosopher font-semibold relative mb-4 after:block after:bg-orange-500 after:h-[2px] after:w-10 after:mt-1">
               Social Media Links
             </h3>
-            <ul className="text-sm space-y-2  text-[10px] ">
-              <li className="flex items-center gap-2">
-                <span className="w-[6px] h-[6px] bg-orange-500 inline-block rounded-full"></span>
-                <a href="youtube.com/@spiritualhealingwithmeeenal?feature=shared">YouTube</a>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-[6px] h-[6px] bg-orange-500 inline-block rounded-full"></span>
-                <a href="https://www.instagram.com/spiritualhealing.mk?igsh=MWs4amZvbG01ZDNsaw==">Instagram</a>
-              </li>
-            </ul>
+            <div className="flex gap-4 mt-2">
+              <motion.a whileHover={{ scale: 1.2 }} href="https://www.youtube.com/@spiritualhealingwithmeeenal">
+                <img src={yt} alt="YouTube" className="w-6 h-6 hover:scale-110 transition-transform" />
+              </motion.a>
+              <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/spiritualhealing.mk?igsh=MWs4amZvbG01ZDNsaw==">
+                <img src={insta} alt="Instagram" className="w-6 h-6 hover:scale-110 transition-transform" />
+              </motion.a>
+            </div>
           </div>
           {/* Column 4: Contact Info */}
           <div>
