@@ -1,7 +1,7 @@
 import React from 'react';
 import bgSection from './assets/background2.jpg';
 import bgCard from './assets/background3.png';
-import tarrotIcon from './assets/tarrot.png';
+import TarrotIcon from './assets/Tarrot.png';
 import numerologyIcon from './assets/numerology.png';
 import yogaIcon from './assets/Yoga.png';
 import comboIcon from './assets/SpecialCombo.png';
@@ -56,13 +56,13 @@ export default function ServicesSection() {
         {/* Tarot Sessions */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-2">
-            <img src={tarrotIcon} alt="Tarot" className="w-8 h-8" />
+            <img src={TarrotIcon} alt="Tarot" className="w-8 h-8" />
             <h3 className="text-lg md:text-2xl text-white font-philosopher font-normal">Tarot Sessions</h3>
           </div>
           <img src={line} alt="divider" className="h-4 w-auto mb-6" />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {tarotServices.map((s, i) => (
-              <ServiceCard key={i} title={s.title} icon={tarrotIcon} />
+              <ServiceCard key={i} title={s.title} icon={TarrotIcon} />
             ))}
           </div>
         </div>
