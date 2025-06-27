@@ -55,6 +55,7 @@ export default function ServicesSection() {
       transition={{ duration: 0.8, ease: 'easeOut' }}
       className="relative w-full py-16 md:py-24 px-2 md:px-8 overflow-x-hidden"
       id="services"
+      style={{ backgroundImage: `url(${bgSection})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       <div className="absolute inset-0 bg-black/60 pointer-events-none" />
       <div className="relative z-10 max-w-7xl mx-auto">

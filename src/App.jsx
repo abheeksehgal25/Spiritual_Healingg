@@ -4,6 +4,7 @@ import HeroCarousel from './HeroCarousel'
 import AboutSection from './AboutSection'
 import ServicesSection from './ServicesSection'
 import ClientsLoveSection from './ClientsLoveSection'
+import InstagramSection from './InstagramSection'
 import Events from './Events'
 import Achievements from './Achievements'
 import Portfolio from './Portfolio'
@@ -20,6 +21,7 @@ function App() {
       <AboutSection />
       <ServicesSection />
       <ClientsLoveSection />
+      <InstagramSection />
       <Events />
       <Achievements />
       <Portfolio />
