@@ -63,15 +63,8 @@ export default function Footer() {
             <p className="text-sm mb-4 font-inter">
               Certified Tarot Reader, Teacher | Angel Therapist | Ethical Spells Casting
             </p>
-            <p className="text-sm mb-2">Follow Us On</p>
-            <div className="flex gap-4 mt-2">
-              <motion.a whileHover={{ scale: 1.2 }} href="">
-                <img src={fb} alt="Facebook" className="w-6 h-6 hover:scale-110 transition-transform" /></motion.a>
-              <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/spiritualhealing.mk?igsh=MWs4amZvbG01ZDNsaw==">
-                <img src={insta} alt="Instagram" className="w-6 h-6 hover:scale-110 transition-transform" /></motion.a>
-              <motion.a whileHover={{ scale: 1.2 }} href="youtube.com/@spiritualhealingwithmeeenal?feature=shared">
-                <img src={yt} alt="YouTube" className="w-6 h-6 hover:scale-110 transition-transform" /></motion.a>
-            </div>
+            
+            
           </div>
           {/* Column 2: Quick Links */}
           <div>
