@@ -60,8 +60,11 @@ export default function AboutSection() {
             className="flex-1 w-full"
           >
             <h3 className="text-lg md:text-2xl font-semibold mb-2 text-center md:text-left">Introduction</h3>
+            <p className="text-gray-700 mb-4 text-center md:text-left text-sm md:text-base">
+            Welcome! I’m Sonia — Yoga Teacher, Mudra Therapist, AstroYoga Guide, and Tarot Card Reader. My mission is to help you align your body, mind, and spirit through empowering, sacred practices. Whether you seek clarity, healing, or inner peace, my sessions gently guide you back to your true self — one breath, one mudra, one insight at a time.
+            </p>
             <p className="text-gray-700 mb-6 text-center md:text-left text-sm md:text-base">
-              Mystic Sonia Inc is a name that resonates with the realms of spirituality and mysticism. Renowned as a Tarot Card Reader, Astrologer, Numerologist, Akashic Record Reader, and Ethical Spell Caster, she is also a clairvoyant and medium. Her journey into the spiritual world is both fascinating and inspiring, tracing back to her father, a Reiki Grand Master and spiritualist, from whom she inherited her extraordinary gifts.
+            With years of experience as a Tarot Card Reader, Astrologer, Numerologist, and Akashic Record Reader, I blend ancient wisdom with intuitive guidance. My spiritual journey began with my father, a Reiki Grand Master, whose teachings continue to inspire my work today.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
               <div className="flex items-center gap-3 bg-white/90 rounded-lg shadow px-4 py-3">
