@@ -22,9 +22,9 @@ function App() {
       <ServicesSection />
       <ClientsLoveSection />
       <InstagramSection />
-      <Events />
       <Achievements />
-      <Portfolio />
+      <Events />
+      {/* <Portfolio /> */}
       <Footer />
       {/* Remove or comment out placeholder sections below if not needed */}
       {/* <section id="contact" className="h-screen flex items-center justify-center bg-gray-100">
