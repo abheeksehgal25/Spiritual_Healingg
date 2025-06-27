@@ -25,7 +25,7 @@ export default function AboutSection() {
           transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
           className="text-2xl md:text-[48px]  font-philosopher font-normal text-center mb-2"
         >
-          About Meenal Khandelwal
+          About Mystic Sonia
         </motion.h2>
         <div className="flex justify-center mb-2">
           <span className="w-16 h-1 bg-orange-400 rounded-full mx-2 mt-3" />
