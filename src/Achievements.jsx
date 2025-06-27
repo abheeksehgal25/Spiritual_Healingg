@@ -22,6 +22,7 @@ export default function Achievements() {
       transition={{ duration: 0.8, ease: 'easeOut' }}
       viewport={{ once: true, amount: 0.2 }}
       className="w-full"
+      id="achievements"
     >
       <div
         className="w-full bg-cover bg-center min-h-[400px] flex flex-col items-center justify-center px-4 md:px-16 lg:px-24 text-white"

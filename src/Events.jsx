@@ -11,6 +11,7 @@ export default function Events() {
       transition={{ duration: 0.8, ease: 'easeOut' }}
       viewport={{ once: true, amount: 0.2 }}
       className="py-10 px-4 md:px-16 lg:px-24 text-black"
+      id="events"
     >
       <div className="text-center mb-10">
         <h2 className="font-philosopher text-4xl font-semibold mb-2">Offline Events</h2>
