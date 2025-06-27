@@ -2,9 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import bg from './assets/background.png';
 import whatsapp from './assets/whatsapp.png';
-// import photo from './assets/photo.png';
+import tarotIcon from './assets/tarot_icon.webp';
+import numerologyIcon from './assets/Numerology_icon.webp';
+import astroYogaIcon from './assets/AstroYoga_icon.webp';
+import mudraIcon from './assets/Mudra_icon.webp';
 
-const slides = [bg, bg, bg, bg, bg]; // Use the background image for all slides
+const slides = [
+  {
+    icon: tarotIcon,
+    label: 'Discover Tarot Reading',
+  },
+  {
+    icon: numerologyIcon,
+    label: 'Discover Numerology',
+  },
+  {
+    icon: astroYogaIcon,
+    label: 'Discover Astro Yoga',
+  },
+  {
+    icon: mudraIcon,
+    label: 'Discover Mudra Therapy',
+  },
+];
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
@@ -23,50 +43,43 @@ export default function HeroCarousel() {
 
   return (
     <div className="relative w-full h-[70vh] md:h-[90vh] overflow-hidden">
-      {/* Slides with Framer Motion */}
-      <AnimatePresence initial={false}>
-        {slides.map((img, idx) =>
-          current === idx ? (
-            <motion.img
-              key={idx}
-              src={img}
-              alt="slide"
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="absolute inset-0 w-full h-full object-cover z-10"
-            />
-          ) : null
-        )}
-      </AnimatePresence>
+      {/* Background Image */}
+      <img
+        src={bg}
+        alt="slide background"
+        className="absolute inset-0 w-full h-full object-cover z-10"
+        style={{ pointerEvents: 'none' }}
+      />
       {/* Overlay for text readability */}
       <div className="absolute inset-0 bg-black/30 z-20" />
-      {/* Overlay Content with Framer Motion */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
-        className="absolute top-1/4 left-6 md:left-24 z-30 text-left"
-      >
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+      {/* Slide Content */}
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
-          className="text-white text-2xl sm:text-3xl md:text-[70px] mb-6 max-w-xs sm:max-w-md md:max-w-2xl leading-tight md:leading-snug drop-shadow-lg font-[Font_2] font-normal"
+          exit={{ opacity: 0, y: -40 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="absolute top-1/2 left-6 md:left-24 -translate-y-1/2 z-30 flex flex-col items-start"
         >
-          Align Your <br /> Body, Mind and Stars
-        </motion.h1>
-        <motion.a
-          href="#services"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
-          className="inline-block bg-[#0655A0] hover:bg-blue-800 text-white font-semibold px-6 py-2 rounded transition-colors text-sm md:text-[18px] shadow"
-        >
-          DISCOVER YOUR PATH
-        </motion.a>
-      </motion.div>
+          <motion.img
+            src={slides[current].icon}
+            alt={slides[current].label}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+            className="w-24 h-24 md:w-40 md:h-40 mb-6 drop-shadow-xl"
+          />
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
+            className="text-white text-2xl sm:text-3xl md:text-5xl font-philosopher font-normal text-left drop-shadow-lg max-w-xs sm:max-w-md md:max-w-2xl"
+          >
+            {slides[current].label}
+          </motion.h1>
+        </motion.div>
+      </AnimatePresence>
       {/* Dots */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
         {slides.map((_, idx) => (
