@@ -48,11 +48,11 @@ export default function ClientsLoveSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
       viewport={{ once: true, amount: 0.2 }}
-      className="relative w-full min-h-screen py-12 md:py-20 flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-[400px] py-4 md:py-8 flex items-center justify-center overflow-hidden"
       style={{ backgroundImage: `url(${bgCard})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       id="testimonials"
     >
-      <div className="relative w-full max-w-md sm:max-w-2xl md:max-w-5xl mx-auto z-10 px-4 md:px-8 py-6 md:py-10 rounded-lg md:rounded-xl shadow-lg" style={{ background: 'rgba(255,255,255,0.85)' }}>
+      <div className="relative w-full max-w-md sm:max-w-2xl md:max-w-2xl mx-auto z-10 px-4 md:px-8 py-3 md:py-6 rounded-lg md:rounded-xl shadow-lg" style={{ background: 'rgba(255,255,255,0.85)' }}>
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
