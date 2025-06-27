@@ -34,10 +34,11 @@ export default function Achievements() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.5 }}
-          className="text-center mb-6"
+          className="text-center mb-6 relative"
         >
-          <h2 className="font-philosopher text-4xl font-semibold mb-2">Achievements</h2>
-          <img src={image} alt="decorative underline" className="mx-auto w-36 sm:w-48" />
+          <div className="absolute inset-0 w-full h-full bg-black/60 rounded-lg -z-10" style={{top: '-8px', left: 0, right: 0, bottom: 0}} />
+          <h2 className="font-philosopher text-2xl sm:text-4xl font-semibold mb-2 text-orange-500 sm:text-white relative z-10">Achievements</h2>
+          <img src={image} alt="decorative underline" className="mx-auto w-36 sm:w-48 relative z-10" />
         </motion.div>
         {/* Achievements */}
         <div className="flex flex-wrap justify-center gap-[40px] md:gap-[90px] mt-4">
