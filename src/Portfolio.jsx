@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import line from './assets/line.svg';
 import image from './assets/image.svg';
+import photo from './assets/photo.png';
 
 export default function Portfolio() {
   return (
@@ -16,20 +16,27 @@ export default function Portfolio() {
         <h2 className="font-philosopher text-3xl font-semibold mb-2">Portfolio</h2>
         <img src={image} alt="decorative underline" className="mx-auto w-36 sm:w-48" />
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
-        {[...Array(8)].map((_, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5, delay: idx * 0.12, ease: 'easeOut' }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="aspect-video bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-          >
-            <img src={line} alt={`portfolio item ${idx + 1}`} className="w-full h-full object-cover hover:shadow-lg transition-shadow duration-300 scale-[40px] cursor-pointer" />
-          </motion.div>
-        ))}
+      <div className="overflow-hidden w-full bg-white py-4">
+        <div className="flex gap-8 animate-marquee w-max">
+          {[...Array(8)].map((_, idx) => (
+            <img
+              key={idx}
+              src={photo}
+              alt={`portfolio item ${idx + 1}`}
+              className="h-56 w-72 object-cover rounded-lg shadow-md"
+            />
+          ))}
+        </div>
       </div>
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 18s linear infinite;
+        }
+      `}</style>
     </motion.section>
   );
 } 

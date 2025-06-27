@@ -23,12 +23,25 @@ export default function Events() {
         viewport={{ once: true, amount: 0.5 }}
         className="overflow-hidden w-full bg-white py-4"
       >
-        <div className="flex gap-8 marquee w-max">
-          <img src={maam} alt="img1" className="h-80 w-80 object-contain" />
-          <img src={maam} alt="img2" className="w-80 h-80 object-contain" />
-          <img src={maam} alt="img3" className="w-80 h-80 object-contain" />
-          <img src={maam} alt="img4" className="w-80 h-80 object-contain" />
+        <div className="flex gap-6 animate-marquee w-max">
+          {[...Array(8)].map((_, idx) => (
+            <img
+              key={idx}
+              src={maam}
+              alt={`event ${idx + 1}`}
+              className="h-80 w-80 object-contain"
+            />
+          ))}
         </div>
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee {
+            animation: marquee 18s linear infinite;
+          }
+        `}</style>
       </motion.div>
     </motion.section>
   );
