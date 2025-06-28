@@ -2,6 +2,21 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import maam from './assets/maam.svg';
 import image from './assets/image.svg';
+import image1 from './assets/image1.jpg';
+import image2 from './assets/image2.jpg';
+import image3 from './assets/image3.jpg';
+import image4 from './assets/image4.jpg';
+import image5 from './assets/image5.jpg';
+import image6 from './assets/image6.jpg';
+import image7 from './assets/image7.jpg';
+import image8 from './assets/image8.jpg';
+import image9 from './assets/image9.jpg';
+
+// Create an array of all images for the banner
+const bannerImages = [
+  maam, image1, image2, image3, image4, image5, image6, image7, image8, image9,
+  maam, image1, image2, image3, image4, image5, image6, image7, image8, image9 // Duplicate for seamless loop
+];
 
 export default function Events() {
   return (
@@ -25,12 +40,23 @@ export default function Events() {
         className="overflow-hidden w-full bg-white py-4"
       >
         <div className="flex gap-6 animate-marquee w-max">
-          {[...Array(8)].map((_, idx) => (
-            <img
+          {bannerImages.map((img, idx) => (
+            <motion.img
               key={idx}
-              src={maam}
+              src={img}
               alt={`event ${idx + 1}`}
-              className="h-80 w-80 object-contain"
+              className="h-80 w-80 object-cover rounded-lg shadow-lg"
+              whileHover={{ 
+                scale: 1.05,
+                transition: { duration: 0.3 }
+              }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ 
+                duration: 0.5, 
+                delay: idx * 0.1,
+                ease: "easeOut"
+              }}
             />
           ))}
         </div>
@@ -40,7 +66,7 @@ export default function Events() {
             100% { transform: translateX(-50%); }
           }
           .animate-marquee {
-            animation: marquee 18s linear infinite;
+            animation: marquee 25s linear infinite;
           }
         `}</style>
       </motion.div>
