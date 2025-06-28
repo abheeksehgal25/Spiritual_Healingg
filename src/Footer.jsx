@@ -1,7 +1,6 @@
 import './App.css';
 import { motion } from 'framer-motion';
 import logo from './assets/logo.svg';
-import fb from './assets/fb.svg';
 import yt from './assets/yt.svg';
 import insta from './assets/insta.png';
 import call from './assets/call.svg';
@@ -61,7 +60,7 @@ export default function Footer() {
           <div className="flex flex-col">
             <img src={logo} alt="Spiritual Bliss Logo" className="w-40 mb-4" />
             <p className="text-sm mb-4 font-inter">
-              Certified Tarot Reader, Teacher | Angel Therapist | Ethical Spells Casting
+              Certified Tarot Reader, Teacher | Angel Therapist | Yoga Teacher | Mudra Therapist
             </p>
             
             
@@ -106,14 +105,34 @@ export default function Footer() {
                 <img src={location} alt="Location" className="w-3 h-3" />
                 Mathura, Uttar Pradesh
               </li>
-              <li className="flex items-center gap-2">
+              <motion.li 
+                className="flex items-center gap-2"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
                 <img src={mail} alt="Mail" className="w-3 h-3" />
-                meenalkhandelwal55@gmail.com
-              </li>
-              <li className="flex items-center gap-2">
+                <a 
+                  href="mailto:meenalkhandelwal55@gmail.com"
+                  className="hover:text-orange-400 transition-colors duration-200 cursor-pointer"
+                  title="Send email to meenalkhandelwal55@gmail.com"
+                >
+                  meenalkhandelwal55@gmail.com
+                </a>
+              </motion.li>
+              <motion.li 
+                className="flex items-center gap-2"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
                 <img src={call} alt="Call" className="w-3 h-3" />
-                +(91)7017094225
-              </li>
+                <a 
+                  href="tel:+917017094225"
+                  className="hover:text-orange-400 transition-colors duration-200 cursor-pointer"
+                  title="Call +(91)7017094225"
+                >
+                  +(91)7017094225
+                </a>
+              </motion.li>
             </ul>
           </div>
         </div>
