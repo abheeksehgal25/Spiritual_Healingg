@@ -5,29 +5,136 @@ import line from './assets/line.png';
 
 const testimonials = [
   {
-    text: `Thank you so much Meenal for a deeper & insightful session. Got to know closely about the things which I had no idea. Loved exploring about what my life holds for me with your lenses. I will definitely comeback to you for future if I want to know anything about my karmic energy`,
-    name: 'Sonia Sharma',
-    role: 'Astrologer',
+    text: 'patient and quite accurate and encouraging.',
+    name: 'AN',
+    role: 'Mar 10th 2025',
+    rating: 5
   },
   {
-    text: `Meenal's tarot reading was spot on and gave me so much clarity. Her guidance is gentle yet powerful. Highly recommended for anyone seeking answers!`,
-    name: 'Priya Verma',
-    role: 'Entrepreneur',
+    text: 'Superb... giving you all answers.. accurate prediction',
+    name: 'MS',
+    role: 'Mar 10th 2025',
+    rating: 5
   },
   {
-    text: `I was amazed by the accuracy of the numerology session. Meenal explained everything so well and made me feel comfortable throughout.`,
-    name: 'Rahul Singh',
-    role: 'Software Engineer',
+    text: 'very thankfully and hopefully',
+    name: 'CB',
+    role: 'Mar 2nd 2025',
+    rating: 5
   },
   {
-    text: `The yoga and chakra balancing sessions have truly changed my life. I feel more energetic and positive every day. Thank you, Meenal!`,
-    name: 'Neha Kapoor',
-    role: 'Yoga Enthusiast',
+    text: 'Thanks Astrologer Ji for Guidance. Awesome',
+    name: 'GG',
+    role: 'Apr 20th 2025',
+    rating: 5
   },
   {
-    text: `Special combo offers are a must-try! I felt a shift in my mindset and overall well-being. Meenal is a wonderful guide.`,
-    name: 'Amit Joshi',
-    role: 'Business Owner',
+    text: 'great soul highly recommended readings on point..',
+    name: 'NA',
+    role: 'Apr 7th 2025',
+    rating: 5
+  },
+  {
+    text: 'best astrologer aapki life mein koi problem ho to ek bar inse jarur baat Karen',
+    name: 'V',
+    role: 'Apr 5th 2025',
+    rating: 5
+  },
+  {
+    text: "The consultation exceeded my expectations. I'm grateful for the guidance.",
+    name: 'AS',
+    role: ', Apr 5th 2025',
+    rating: 5
+  },
+  {
+    text: 'thank you so much for your reading and advice 🙏🏻',
+    name: 'HS',
+    role: ', May 30th 2025',
+    rating: 5
+  },
+  {
+    text: 'very polite har baat ko bahut acche se explain kiya',
+    name: 'BO',
+    role: ', May 22nd 2025',
+    rating: 5
+  },
+  {
+    text: 'I am getting very negative but now I feel positive from',
+    name: 'PY',
+    role: ', May 15th 2025',
+    rating: 5
+  },
+  {
+    text: 'Thank you for your valuable suggestions',
+    name: 'AS',
+    role: 'Apr 5th 2025',
+    rating: 5
+  },
+  {
+    text: 'it was nice meeting with you',
+    name: 'AS',
+    role: 'Mar 10th 2025',
+    rating: 5
+  },
+  {
+    text: 'Best astrologer I have ever approached.',
+    name: 'GS',
+    role: 'Apr 26th 2025',
+    rating: 5
+  },
+  {
+    text: 'thank you so much ..you were very polite and you guidance made be relief a lot',
+    name: 'KN',
+    role: 'Apr 26th 2025',
+    rating: 5
+  },
+  {
+    text: 'Astrology session exceeded expectations. Valuable guidance, reassuring predictions. Feeling empowered and motivated.',
+    name: 'TB',
+    role: ', Jun 27th 2025',
+    rating: 5
+  },
+  {
+    text: '',
+    name: 'NS',
+    role: 'Jun 23rd 2025',
+    rating: 5
+  },
+  {
+    text: "I'm impressed by the astrologer's expertise. Will definitely consult again.",
+    name: 'HK',
+    role: 'Jun 23rd 2025',
+    rating: 5
+  },
+  {
+    text: 'thanks to a lot for give best guidance TYSM',
+    name: 'RB',
+    role: 'Jun 19th 2025',
+    rating: 5
+  },
+  {
+    text: 'very good informations',
+    name: 'SH',
+    role: 'Jun 9th 2025',
+    rating: 5
+  },
+  {
+    text: 'will connect again surely.. hope what you said comes true',
+    name: 'SH',
+    role: 'Jun 9th 2025',
+    rating: 5
+  },
+  {
+    text: 'Very. Fast and efficient. Thank you so much',
+    name: 'MD',
+    role: 'Jun 3rd 2025',
+    rating: 5
+  },
+  {
+    text: 'Aapke solutions se meri problems solve hui.',
+    name: 'SD',
+    role: 'May 30th 2025',
+    rating: 5
   },
 ];
 
@@ -83,6 +190,7 @@ export default function ClientsLoveSection() {
             {testimonials[current].name}
             <span className="font-normal text-gray-600 text-sm md:text-base"> - {testimonials[current].role}</span>
           </div>
+          <div className="flex items-center mb-2">{Array.from({length: testimonials[current].rating}).map((_,i) => <span key={i} className="text-yellow-400 text-lg">★</span>)}</div>
         </motion.div>
         {/* Dots */}
         <motion.div

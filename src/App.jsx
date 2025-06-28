@@ -12,6 +12,8 @@ import Portfolio from './Portfolio'
 import Footer from './Footer'
 import BlogSection from './BlogSection'
 import BlogPage from './BlogPage'
+import PrivacyPolicy from './PrivacyPolicy'
+import TermsOfUse from './TermsOfUse'
 
 function HomePage() {
   return (
@@ -38,6 +40,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-use" element={<TermsOfUse />} />
         </Routes>
         <Footer />
       </div>

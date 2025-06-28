@@ -6,6 +6,7 @@ import insta from './assets/insta.png';
 import call from './assets/call.svg';
 import mail from './assets/mail.svg';
 import location from './assets/location.svg';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -73,11 +74,11 @@ export default function Footer() {
             <ul className="text-sm space-y-2 text-[10px] font-inter">
               <li className="flex items-center gap-2">
                 <span className="w-[6px] h-[6px] bg-orange-500 inline-block rounded-full"></span>
-                Privacy Policy
+                <Link to="/privacy-policy" className="hover:text-orange-400 transition-colors">Privacy Policy</Link>
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-[6px] h-[6px] bg-orange-500 inline-block rounded-full"></span>
-                Terms of Use
+                <Link to="/terms-of-use" className="hover:text-orange-400 transition-colors">Terms of Use</Link>
               </li>
             </ul>
           </div>
