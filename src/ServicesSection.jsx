@@ -42,7 +42,7 @@ function ServiceCard({ title, icon, idx }) {
     >
       <motion.img src={icon} alt="icon" className="w-16 h-16 mb-4" initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.1 + idx * 0.12 }} />
       <div className="text-center font-semibold text-sm md:text-base mb-2 text-black">{title}</div>
-      <a href="#" className="text-blue-700 text-xs md:text-sm font-semibold underline hover:text-blue-900">BOOK A SESSION NOW</a>
+      <a href="https://calendly.com/meenalkhandelwal55" className="text-blue-700 text-xs md:text-sm font-semibold underline hover:text-blue-900">BOOK A SESSION NOW</a>
     </motion.div>
   );
 }
@@ -144,7 +144,7 @@ export default function ServicesSection() {
         </div>
         <div className="flex justify-center mt-8">
           <motion.a
-            href="#"
+            href="https://calendly.com/meenalkhandelwal55"
             whileHover={{ scale: 1.07 }}
             whileTap={{ scale: 0.97 }}
             className="bg-[#0655A0] hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded transition-colors text-base md:text-lg shadow"

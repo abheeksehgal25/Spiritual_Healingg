@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from './assets/logo.png';
 
 const navLinks = [
@@ -18,6 +18,21 @@ export default function Navbar() {
   const [active, setActive] = useState('Home');
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // Listen for hash in URL and scroll to section after navigation
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash) {
+      const id = location.hash.replace('#', '');
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          setActive(id.charAt(0).toUpperCase() + id.slice(1));
+        }
+      }, 100);
+    }
+  }, [location]);
 
   const handleScroll = (id) => {
     const el = document.getElementById(id);
@@ -30,12 +45,19 @@ export default function Navbar() {
 
   const handleNavClick = (link) => {
     if (link.isScroll) {
-      handleScroll(link.to);
-      setActive(link.name);
+      if (location.pathname !== '/') {
+        // Navigate to home with hash, then scroll after navigation
+        navigate('/#' + link.to);
+        setMenuOpen(false);
+      } else {
+        handleScroll(link.to);
+        setActive(link.name);
+        setMenuOpen(false);
+      }
     } else {
       setActive(link.name);
+      setMenuOpen(false);
     }
-    setMenuOpen(false);
   };
 
   return (
