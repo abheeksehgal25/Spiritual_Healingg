@@ -15,7 +15,8 @@ const slides = [
       </svg>
     ),
     label: 'Discover Tarot Reading',
-    service: 'tarot'
+    service: 'tarot',
+    gradient: 'from-purple-600/90 to-pink-600/90'
   },
   {
     icon: (
@@ -26,7 +27,8 @@ const slides = [
       </svg>
     ),
     label: 'Discover Numerology',
-    service: 'numerology'
+    service: 'numerology',
+    gradient: 'from-blue-600/90 to-cyan-600/90'
   },
   {
     icon: (
@@ -38,7 +40,8 @@ const slides = [
       </svg>
     ),
     label: 'Discover Astro Yoga',
-    service: 'yoga'
+    service: 'yoga',
+    gradient: 'from-green-600/90 to-emerald-600/90'
   },
   {
     icon: (
@@ -49,9 +52,42 @@ const slides = [
       </svg>
     ),
     label: 'Discover Mudra Therapy',
-    service: 'meditation'
+    service: 'meditation',
+    gradient: 'from-orange-600/90 to-red-600/90'
   },
 ];
+
+// Floating particles component
+const FloatingParticles = () => {
+  const particles = Array.from({ length: 20 }, (_, i) => i);
+  
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {particles.map((i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 bg-white/30 rounded-full"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            y: [0, -100, 0],
+            x: [0, Math.random() * 50 - 25, 0],
+            opacity: [0, 1, 0],
+            scale: [0, 1, 0],
+          }}
+          transition={{
+            duration: 3 + Math.random() * 2,
+            repeat: Infinity,
+            delay: Math.random() * 2,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
@@ -80,36 +116,36 @@ export default function HeroCarousel() {
   };
 
   const textVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.8,
         ease: "easeOut"
       }
     }
   };
 
   const buttonVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        delay: 0.2,
+        duration: 0.8,
+        delay: 0.3,
         ease: "easeOut"
       }
     },
     hover: {
-      scale: 1.02,
+      scale: 1.05,
       transition: {
-        duration: 0.2
+        duration: 0.3
       }
     },
     tap: {
-      scale: 0.98,
+      scale: 0.95,
       transition: {
         duration: 0.1
       }
@@ -125,7 +161,7 @@ export default function HeroCarousel() {
       }
     },
     hover: {
-      scale: 1.1,
+      scale: 1.2,
       transition: {
         duration: 0.2
       }
@@ -133,39 +169,45 @@ export default function HeroCarousel() {
   };
 
   return (
-    <div className="relative w-full h-[70vh] md:h-[90vh] overflow-hidden">
-      {/* Background Image with subtle animation */}
+    <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[90vh] overflow-hidden px-2 sm:px-4 md:px-0">
+      {/* Background Image with enhanced animation */}
       <motion.img
         src={bg}
         alt="slide background"
         className="absolute inset-0 w-full h-full object-cover z-10"
         style={{ pointerEvents: 'none' }}
         animate={{
-          scale: [1, 1.02, 1],
+          scale: [1, 1.05, 1],
         }}
         transition={{
-          duration: 30,
+          duration: 20,
           repeat: Infinity,
           ease: "easeInOut"
         }}
       />
       
-      {/* Animated overlay */}
+      {/* Enhanced gradient overlay */}
       <motion.div 
-        className="absolute inset-0 bg-black/30 z-20"
+        className="absolute inset-0 z-20"
+        style={{
+          background: `linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%)`
+        }}
         animate={{
           background: [
-            "rgba(0,0,0,0.3)",
-            "rgba(0,0,0,0.35)",
-            "rgba(0,0,0,0.3)"
+            "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%)",
+            "linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.5) 100%)",
+            "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%)"
           ]
         }}
         transition={{
-          duration: 15,
+          duration: 10,
           repeat: Infinity,
           ease: "easeInOut"
         }}
       />
+      
+      {/* Floating particles */}
+      <FloatingParticles />
       
       {/* Slide Content */}
       <AnimatePresence mode="wait">
@@ -175,36 +217,53 @@ export default function HeroCarousel() {
           initial="hidden"
           animate="visible"
           exit="hidden"
-          className="absolute top-1/2 left-6 md:left-24 -translate-y-1/2 z-30 flex flex-col items-start"
+          className="absolute top-1/2 left-2 sm:left-6 md:left-24 -translate-y-1/2 z-30 flex flex-col items-start w-[90vw] max-w-lg"
         >
-          {/* Main heading with staggered text animation */}
+          {/* Enhanced main heading */}
           <motion.div className="mb-12">
             <motion.h1
               variants={textVariants}
-              className="text-white text-2xl sm:text-3xl md:text-5xl font-philosopher font-normal text-left drop-shadow-lg"
+              className="text-white text-3xl sm:text-4xl md:text-6xl font-philosopher font-normal text-left drop-shadow-2xl leading-tight"
             >
-              Align Your <br />
-              Body, Mind and Stars
+              <span className="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+                Align Your
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-purple-200 to-pink-200 bg-clip-text text-transparent">
+                Body, Mind and Stars
+              </span>
             </motion.h1>
+            <motion.p
+              variants={textVariants}
+              className="text-white/90 text-lg md:text-xl mt-4 max-w-md"
+            >
+              Discover your spiritual path with expert guidance
+            </motion.p>
           </motion.div>
           
-          {/* Animated button */}
+          {/* Enhanced animated button */}
           <motion.button
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
-            className="flex items-center gap-3 bg-purple-600/80 backdrop-blur-sm text-white px-8 py-4 rounded-full border border-purple-400/50 hover:bg-purple-500/90 transition-all duration-300 group relative overflow-hidden shadow-lg mt-2"
+            className={`flex items-center gap-2 sm:gap-4 bg-gradient-to-r ${slides[current].gradient} backdrop-blur-md text-white px-6 sm:px-10 py-3 sm:py-5 rounded-full border border-white/20 hover:border-white/40 transition-all duration-300 group relative overflow-hidden shadow-2xl text-base sm:text-xl w-full max-w-xs`}
           >
-            <div className="w-5 h-5">
+            <div className="w-6 h-6">
               {slides[current].icon}
             </div>
-            <span className="text-lg font-medium">{slides[current].label}</span>
+            <span className="font-medium">{slides[current].label}</span>
+            <motion.div
+              className="absolute inset-0 bg-white/20"
+              initial={{ x: '-100%' }}
+              whileHover={{ x: '100%' }}
+              transition={{ duration: 0.6 }}
+            />
           </motion.button>
         </motion.div>
       </AnimatePresence>
       
-      {/* Animated dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+      {/* Enhanced animated dots */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-40">
         {slides.map((_, idx) => (
           <motion.button
             key={idx}
@@ -212,14 +271,11 @@ export default function HeroCarousel() {
             initial="hidden"
             animate="visible"
             whileHover="hover"
-            className={`w-3 h-3 rounded-full border-2 border-white transition-colors ${
-              current === idx ? 'bg-white' : 'bg-transparent'
+            className={`w-4 h-4 rounded-full border-2 border-white transition-all duration-300 ${
+              current === idx ? 'bg-white scale-125' : 'bg-transparent hover:bg-white/50'
             }`}
             onClick={() => setCurrent(idx)}
             aria-label={`Go to slide ${idx + 1}`}
-            style={{
-              animationDelay: `${idx * 0.1}s`
-            }}
           />
         ))}
       </div>

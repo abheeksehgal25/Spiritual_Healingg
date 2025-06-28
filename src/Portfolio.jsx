@@ -10,7 +10,7 @@ export default function Portfolio() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
       viewport={{ once: true, amount: 0.2 }}
-      className="py-10 px-4 md:px-16 lg:px-24 text-black"
+      className="py-10 px-2 sm:px-4 md:px-16 lg:px-24 text-black"
     >
       <div className="text-center mb-10">
         <h2 className="font-philosopher text-3xl font-semibold mb-2">Portfolio</h2>

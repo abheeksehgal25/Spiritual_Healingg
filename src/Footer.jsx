@@ -15,8 +15,33 @@ export default function Footer() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
       viewport={{ once: true, amount: 0.2 }}
-      className="bg-[#222222] py-8 text-white"
+      className="bg-[#222222] py-8 text-white relative overflow-hidden backdrop-blur-md "
     >
+      {/* Floating particles */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full blur-2xl"
+            style={{
+              left: `${10 + Math.random() * 80}%`,
+              top: `${10 + Math.random() * 80}%`,
+              width: `${20 + Math.random() * 36}px`,
+              height: `${20 + Math.random() * 36}px`,
+              background: `linear-gradient(135deg, rgba(156, 39, 176, 0.10), rgba(33, 150, 243, 0.10))`,
+            }}
+            animate={{
+              y: [0, -12, 0],
+              opacity: [0.5, 0.8, 0.5],
+            }}
+            transition={{
+              duration: 10 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
       {/* Unified Container */}
       <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-20">
         {/* Newsletter Section */}

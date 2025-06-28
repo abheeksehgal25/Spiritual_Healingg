@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import bgCard from './assets/background3.png';
+import { motion, AnimatePresence } from 'framer-motion';
 import line from './assets/line.png';
 
 const testimonials = [
@@ -43,25 +42,25 @@ const testimonials = [
   {
     text: "The consultation exceeded my expectations. I'm grateful for the guidance.",
     name: 'AS',
-    role: ', Apr 5th 2025',
+    role: 'Apr 5th 2025',
     rating: 5
   },
   {
     text: 'thank you so much for your reading and advice 🙏🏻',
     name: 'HS',
-    role: ', May 30th 2025',
+    role: 'May 30th 2025',
     rating: 5
   },
   {
     text: 'very polite har baat ko bahut acche se explain kiya',
     name: 'BO',
-    role: ', May 22nd 2025',
+    role: 'May 22nd 2025',
     rating: 5
   },
   {
     text: 'I am getting very negative but now I feel positive from',
     name: 'PY',
-    role: ', May 15th 2025',
+    role: 'May 15th 2025',
     rating: 5
   },
   {
@@ -91,13 +90,7 @@ const testimonials = [
   {
     text: 'Astrology session exceeded expectations. Valuable guidance, reassuring predictions. Feeling empowered and motivated.',
     name: 'TB',
-    role: ', Jun 27th 2025',
-    rating: 5
-  },
-  {
-    text: '',
-    name: 'NS',
-    role: 'Jun 23rd 2025',
+    role: 'Jun 27th 2025',
     rating: 5
   },
   {
@@ -138,6 +131,41 @@ const testimonials = [
   },
 ];
 
+// Floating hearts component
+const FloatingHearts = () => {
+  const hearts = Array.from({ length: 12 }, (_, i) => i);
+  
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {hearts.map((i) => (
+        <motion.div
+          key={i}
+          className="absolute text-pink-400/60"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            fontSize: `${12 + Math.random() * 16}px`,
+          }}
+          animate={{
+            y: [0, -100, 0],
+            x: [0, Math.random() * 30 - 15, 0],
+            opacity: [0, 1, 0],
+            scale: [0, 1, 0],
+          }}
+          transition={{
+            duration: 4 + Math.random() * 3,
+            repeat: Infinity,
+            delay: Math.random() * 2,
+            ease: "easeInOut",
+          }}
+        >
+          ❤️
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
 export default function ClientsLoveSection() {
   const [current, setCurrent] = useState(0);
 
@@ -155,59 +183,164 @@ export default function ClientsLoveSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
       viewport={{ once: true, amount: 0.2 }}
-      className="relative w-full min-h-[400px] py-4 md:py-8 flex items-center justify-center overflow-hidden"
-      style={{ backgroundImage: `url(${bgCard})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+      className="relative w-full min-h-[500px] py-16 md:py-24 flex items-center justify-center overflow-hidden"
+      style={{ 
+        background: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`,
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center' 
+      }}
       id="testimonials"
     >
-      <div className="relative w-full max-w-md sm:max-w-2xl md:max-w-2xl mx-auto z-10 px-4 md:px-8 py-3 md:py-6 rounded-lg md:rounded-xl shadow-lg" style={{ background: 'rgba(255,255,255,0.85)' }}>
-        {/* Title */}
+      {/* Enhanced background overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/30 to-purple-900/20" />
+      
+      {/* Floating hearts */}
+      <FloatingHearts />
+      
+      <div className="relative w-full max-w-lg mx-auto z-10 px-2 sm:px-4 md:px-8">
+        {/* Enhanced Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.5 }}
-          className="flex flex-col items-center mb-4"
+          className="text-center mb-12"
         >
-          <div className="flex items-center gap-2 text-2xl md:text-3xl">
-            <span role="img" aria-label="heart">❤️</span>
-            <span className="font-philosopher font-normal">Client's Love</span>
-            <span role="img" aria-label="heart">❤️</span>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <motion.span 
+              role="img" 
+              aria-label="heart"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              ❤️
+            </motion.span>
+            <h2 className="text-3xl md:text-5xl font-philosopher font-normal text-white">
+              <span className="bg-gradient-to-r from-white to-pink-200 bg-clip-text text-transparent">
+                Client's Love
+              </span>
+            </h2>
+            <motion.span 
+              role="img" 
+              aria-label="heart"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+            >
+              ❤️
+            </motion.span>
           </div>
-          <img src={line} alt="divider" className="h-4 w-auto my-2" />
+          <div className="flex justify-center mb-6">
+            <img src={line} alt="divider" className="h-8 w-auto" />
+          </div>
+          <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto">
+            What our clients say about their spiritual journey with us
+          </p>
         </motion.div>
-        {/* Testimonial */}
+        
+        {/* Enhanced Testimonial Card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.5 }}
-          className="flex flex-col items-start justify-center text-left max-w-3xl mx-auto"
+          className="relative w-full"
         >
-          <p className="italic text-gray-700 text-sm md:text-base mb-4">
-            {testimonials[current].text}
-          </p>
-          <div className="font-semibold text-black text-base md:text-lg">
-            {testimonials[current].name}
-            <span className="font-normal text-gray-600 text-sm md:text-base"> - {testimonials[current].role}</span>
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-4 sm:p-8 md:p-12 border border-white/20 w-full max-w-full">
+            {/* Quote icon */}
+            {/* <div className="absolute -top-4 left-4 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center shadow-md">
+              <span className="text-gray-500 text-lg">"</span>
+            </div> */}
+            
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="text-center"
+              >
+                {/* Testimonial text */}
+                <motion.p 
+                  className="italic text-gray-800 text-lg md:text-xl mb-6 leading-relaxed"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  "{testimonials[current].text}"
+                </motion.p>
+                
+                {/* Client info */}
+                <motion.div 
+                  className="mb-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <div className="font-bold text-gray-900 text-lg md:text-xl mb-1">
+                    {testimonials[current].name}
+                  </div>
+                  <div className="text-gray-600 text-sm md:text-base">
+                    {testimonials[current].role}
+                  </div>
+                </motion.div>
+                
+                {/* Star rating */}
+                <motion.div 
+                  className="flex items-center justify-center gap-1 mb-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  {Array.from({length: testimonials[current].rating}).map((_, i) => (
+                    <motion.span 
+                      key={i} 
+                      className="text-yellow-400 text-xl md:text-2xl"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.3, delay: 0.5 + i * 0.1 }}
+                    >
+                      ★
+                    </motion.span>
+                  ))}
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
           </div>
-          <div className="flex items-center mb-2">{Array.from({length: testimonials[current].rating}).map((_,i) => <span key={i} className="text-yellow-400 text-lg">★</span>)}</div>
         </motion.div>
-        {/* Dots */}
+        
+        {/* Enhanced Dots */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.5 }}
-          className="flex justify-center mt-4 gap-2"
+          className="flex flex-wrap justify-center mt-8 gap-1 sm:gap-3 max-w-xs mx-auto"
         >
           {testimonials.map((_, idx) => (
-            <button
+            <motion.button
               key={idx}
-              className={`w-2.5 h-2.5 rounded-full border-none ${current === idx ? 'bg-orange-400' : 'bg-gray-300'} transition-colors`}
+              className={`w-2 h-2 sm:w-4 sm:h-4 rounded-full border-2 border-white transition-all duration-300 ${
+                current === idx ? 'bg-white scale-125' : 'bg-transparent hover:bg-white/50'
+              }`}
               onClick={() => setCurrent(idx)}
               aria-label={`Go to testimonial ${idx + 1}`}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
             />
           ))}
+        </motion.div>
+        
+        {/* Progress indicator */}
+        <motion.div
+          className="flex justify-center mt-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <div className="text-white/70 text-sm text-center w-full">
+            {current + 1} of {testimonials.length}
+          </div>
         </motion.div>
       </div>
     </motion.section>

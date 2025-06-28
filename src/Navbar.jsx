@@ -57,13 +57,14 @@ export default function Navbar() {
     } else {
       setActive(link.name);
       setMenuOpen(false);
+      navigate(link.to);
     }
   };
 
   return (
     <>
       {/* Top Info Bar */}
-      <div className="w-full bg-[#070b1a] text-white text-xs md:text-sm flex flex-col md:flex-row items-start justify-start px-2 md:px-8 py-1 gap-y-1 gap-x-6 font-inter">
+      <div className="w-full bg-[#070b1a] text-white text-xs md:text-sm flex flex-col md:flex-row items-start justify-start px-2 md:px-8 py-1 gap-y-1 gap-x-6 font-inter z-[100]">
         <div className="flex items-center gap-1 md:gap-2">
           <span role="img" aria-label="phone">📞</span>
           <span>+91 7017094225</span>
@@ -77,109 +78,127 @@ export default function Navbar() {
           <span>9:30 AM - 6:30 PM</span>
         </div>
       </div>
-      {/* Main Navbar with Framer Motion */}
+      {/* Main Navbar */}
       <motion.nav
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="w-full bg-white flex items-center justify-between px-2 md:px-12 py-2 md:py-3 shadow-sm sticky top-0 z-50"
+        className="w-full bg-gradient-to-r from-purple-100/80 via-pink-100/70 to-blue-100/80 backdrop-blur-md bg-opacity-80 flex items-center px-2 sm:px-4 md:px-12 py-2 md:py-3 shadow-sm sticky top-0 z-[100]"
       >
-        <div className="flex items-center">
+        <div className="flex items-center w-full">
           <Link to="/">
-            <img src={logo} alt="Logo" className="h-12 md:h-16 w-auto object-contain" />
+            <img src={logo} alt="Logo" className="h-8 w-auto md:h-12 md:w-auto object-contain" />
           </Link>
-        </div>
-        {/* Desktop Nav */}
-        <ul className="hidden md:flex gap-8 font-semibold text-black text-base relative">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              {link.isScroll ? (
-                <span
-                  className={`cursor-pointer pb-1 transition-colors duration-200 relative ${active === link.name ? `${orange}` : 'hover:text-orange-400'}`}
-                  onClick={() => handleNavClick(link)}
-                >
-                  {link.name}
-                  {active === link.name && (
-                    <motion.span
-                      layoutId="navbar-underline"
-                      className="absolute left-0 right-0 -bottom-1 h-[2.5px] rounded bg-orange-500"
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                </span>
-              ) : (
-                <Link
-                  to={link.to}
-                  className={`cursor-pointer pb-1 transition-colors duration-200 relative ${location.pathname === link.to ? `${orange}` : 'hover:text-orange-400'}`}
-                  onClick={() => handleNavClick(link)}
-                >
-                  {link.name}
-                  {location.pathname === link.to && (
-                    <motion.span
-                      layoutId="navbar-underline"
-                      className="absolute left-0 right-0 -bottom-1 h-[2.5px] rounded bg-orange-500"
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              )}
-            </li>
-          ))}
-        </ul>
-        {/* Hamburger for Mobile */}
-        <button
-          className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Open menu"
-        >
-          <span className={`block w-6 h-0.5 bg-black mb-1 transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-          <span className={`block w-6 h-0.5 bg-black mb-1 transition-all ${menuOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`block w-6 h-0.5 bg-black transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-        </button>
-        {/* Mobile Menu Overlay */}
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/70 z-[999] flex flex-col items-center justify-center md:hidden"
-            >
-              <motion.ul
-                initial="closed"
-                animate="open"
-                exit="closed"
-                variants={{
-                  open: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-                  closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
-                }}
-                className="flex flex-col gap-8 text-white text-2xl font-semibold"
-              >
-                {navLinks.map((link) => (
-                  <motion.li
-                    key={link.name}
-                    variants={{
-                      closed: { opacity: 0, y: 30 },
-                      open: { opacity: 1, y: 0 },
-                    }}
-                    className={`cursor-pointer pb-1 transition-colors duration-200 relative ${active === link.name ? 'text-orange-400' : 'hover:text-orange-400'}`}
+          {/* Desktop Nav */}
+          <ul className="hidden md:flex gap-8 font-semibold text-black text-base relative ml-auto justify-end">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                {link.isScroll ? (
+                  <span
+                    className={`cursor-pointer pb-1 transition-colors duration-200 relative ${active === link.name ? `${orange}` : 'hover:text-orange-400'}`}
+                    onClick={() => handleNavClick(link)}
                   >
-                    {link.isScroll ? (
-                      <span onClick={() => handleNavClick(link)}>
-                        {link.name}
-                      </span>
-                    ) : (
-                      <Link to={link.to} onClick={() => handleNavClick(link)}>
-                        {link.name}
-                      </Link>
+                    {link.name}
+                    {active === link.name && (
+                      <motion.span
+                        layoutId="navbar-underline"
+                        className="absolute left-0 right-0 -bottom-1 h-[2.5px] rounded bg-orange-500"
+                        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      />
                     )}
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                  </span>
+                ) : (
+                  <Link
+                    to={link.to}
+                    className={`cursor-pointer pb-1 transition-colors duration-200 relative ${location.pathname === link.to ? `${orange}` : 'hover:text-orange-400'}`}
+                    onClick={() => handleNavClick(link)}
+                  >
+                    {link.name}
+                    {location.pathname === link.to && (
+                      <motion.span
+                        layoutId="navbar-underline"
+                        className="absolute left-0 right-0 -bottom-1 h-[2.5px] rounded bg-orange-500"
+                        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+          {/* Hamburger for Mobile */}
+          <button
+            className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none ml-auto"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Open menu"
+          >
+            <span className={`block w-6 h-0.5 bg-black mb-1 transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-black mb-1 transition-all ${menuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-black transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          </button>
+        </div>
       </motion.nav>
+      
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] w-screen h-screen bg-black/95 flex flex-col items-center justify-start pt-16 px-6 overflow-y-auto"
+            style={{ top: 0, left: 0, right: 0, bottom: 0 }}
+          >
+            {/* Close button */}
+            <button
+              className="absolute top-6 right-6 text-4xl text-white focus:outline-none hover:text-orange-400 transition-colors"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              &times;
+            </button>
+            
+            {/* Logo */}
+            <Link to="/" className="mb-12 mt-4" onClick={() => setMenuOpen(false)}>
+              <img src={logo} alt="Logo" className="h-16 w-auto mx-auto" />
+            </Link>
+            
+            {/* Navigation Links */}
+            <nav className="flex flex-col gap-8 text-3xl font-bold w-full items-center text-white">
+              {navLinks.map((link) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: navLinks.indexOf(link) * 0.1 }}
+                >
+                  <button
+                    className={`cursor-pointer pb-2 transition-all duration-300 relative w-full text-center hover:text-orange-400 ${
+                      active === link.name ? 'text-orange-500' : 'text-white'
+                    }`}
+                    onClick={() => handleNavClick(link)}
+                  >
+                    {link.name}
+                    {active === link.name && (
+                      <motion.div
+                        layoutId="mobile-underline"
+                        className="absolute left-1/2 transform -translate-x-1/2 -bottom-1 h-1 w-16 bg-orange-500 rounded-full"
+                        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                </motion.div>
+              ))}
+            </nav>
+            
+            {/* Contact Info at bottom */}
+            {/* <div className="mt-auto mb-8 text-center text-white/80 text-sm">
+              <p className="mb-2">📞 +91 7017094225</p>
+              <p>📧 meenalkhandelwal55@gmail.com</p>
+            </div> */}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 } 
