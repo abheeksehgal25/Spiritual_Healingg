@@ -74,46 +74,42 @@ export default function HeroCarousel() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
+        duration: 0.5
       }
     }
   };
 
   const textVariants = {
-    hidden: { opacity: 0, y: 30, x: -20 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      x: 0,
       transition: {
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        duration: 0.6,
+        ease: "easeOut"
       }
     }
   };
 
   const buttonVariants = {
-    hidden: { opacity: 0, y: 20, scale: 0.9 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
         duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    },
-    hover: {
-      scale: 1.05,
-      y: -2,
-      transition: {
-        duration: 0.3,
+        delay: 0.2,
         ease: "easeOut"
       }
     },
+    hover: {
+      scale: 1.02,
+      transition: {
+        duration: 0.2
+      }
+    },
     tap: {
-      scale: 0.95,
+      scale: 0.98,
       transition: {
         duration: 0.1
       }
@@ -121,17 +117,15 @@ export default function HeroCarousel() {
   };
 
   const dotVariants = {
-    hidden: { scale: 0, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
-      scale: 1,
       opacity: 1,
       transition: {
-        duration: 0.3,
-        ease: "easeOut"
+        duration: 0.3
       }
     },
     hover: {
-      scale: 1.2,
+      scale: 1.1,
       transition: {
         duration: 0.2
       }
@@ -147,10 +141,10 @@ export default function HeroCarousel() {
         className="absolute inset-0 w-full h-full object-cover z-10"
         style={{ pointerEvents: 'none' }}
         animate={{
-          scale: [1, 1.05, 1],
+          scale: [1, 1.02, 1],
         }}
         transition={{
-          duration: 20,
+          duration: 30,
           repeat: Infinity,
           ease: "easeInOut"
         }}
@@ -162,12 +156,12 @@ export default function HeroCarousel() {
         animate={{
           background: [
             "rgba(0,0,0,0.3)",
-            "rgba(0,0,0,0.4)",
+            "rgba(0,0,0,0.35)",
             "rgba(0,0,0,0.3)"
           ]
         }}
         transition={{
-          duration: 8,
+          duration: 15,
           repeat: Infinity,
           ease: "easeInOut"
         }}
@@ -185,18 +179,13 @@ export default function HeroCarousel() {
         >
           {/* Main heading with staggered text animation */}
           <motion.div className="mb-12">
-            <motion.span
+            <motion.h1
               variants={textVariants}
-              className="text-white text-2xl sm:text-3xl md:text-5xl font-philosopher font-normal text-left drop-shadow-lg block"
+              className="text-white text-2xl sm:text-3xl md:text-5xl font-philosopher font-normal text-left drop-shadow-lg"
             >
-              Align Your
-            </motion.span>
-            <motion.span
-              variants={textVariants}
-              className="text-white text-2xl sm:text-3xl md:text-5xl font-philosopher font-normal text-left drop-shadow-lg block mt-3"
-            >
+              Align Your <br />
               Body, Mind and Stars
-            </motion.span>
+            </motion.h1>
           </motion.div>
           
           {/* Animated button */}
@@ -206,22 +195,10 @@ export default function HeroCarousel() {
             whileTap="tap"
             className="flex items-center gap-3 bg-purple-600/80 backdrop-blur-sm text-white px-8 py-4 rounded-full border border-purple-400/50 hover:bg-purple-500/90 transition-all duration-300 group relative overflow-hidden shadow-lg mt-2"
           >
-            {/* Button background animation */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: "100%" }}
-              transition={{ duration: 0.6 }}
-            />
-            
-            <motion.div 
-              className="w-5 h-5 relative z-10"
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
+            <div className="w-5 h-5">
               {slides[current].icon}
-            </motion.div>
-            <span className="text-lg font-medium relative z-10">{slides[current].label}</span>
+            </div>
+            <span className="text-lg font-medium">{slides[current].label}</span>
           </motion.button>
         </motion.div>
       </AnimatePresence>
@@ -253,16 +230,8 @@ export default function HeroCarousel() {
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50"
-        whileHover={{ scale: 1.1, rotate: 5 }}
-        whileTap={{ scale: 0.9 }}
-        animate={{
-          y: [0, -5, 0],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       >
         <img src={whatsapp} alt="WhatsApp" className="w-14 h-14 rounded-full shadow-lg" />
       </motion.a>
