@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import logs4 from './assets/logs1.svg';
 import logs2 from './assets/logs2.svg';
 import logs3 from './assets/logs.svg';
+import logs1 from './assets/logs4.svg';
 import background from './assets/background.jpg';
 import image from './assets/image.svg';
 
@@ -28,6 +29,12 @@ const AnimatedCounter = ({ end, duration = 2 }) => {
 
 export default function Achievements() {
   const achievementsData = [
+    { 
+      img: logs1, 
+      label: 'Years Of Practice', 
+      value: 15,
+      description: 'Years of spiritual healing experience'
+    },
     { 
       img: logs2, 
       label: 'Readings', 
