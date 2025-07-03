@@ -106,8 +106,8 @@ export default function Achievements() {
             viewport={{ once: true, amount: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="font-philosopher text-3xl md:text-5xl font-semibold mb-4">
-              <span className="bg-gradient-to-r from-white to-pink-200 bg-clip-text text-transparent">
+            <h2 className="font-philosopher text-3xl md:text-5xl font-bold mb-4">
+              <span className="bg-white font-source font-bold bg-clip-text text-transparent">
                 Our Achievements
               </span>
             </h2>
@@ -142,13 +142,13 @@ export default function Achievements() {
                     transition: { duration: 0.3 }
                   }}
                 >
-                  <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-white/20 to-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                  {/* <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-white/20 to-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30 shadow-lg group-hover:shadow-xl transition-all duration-300">
                     <img 
                       src={item.img} 
                       alt={item.label} 
                       className="w-12 h-12 md:w-14 md:h-14 object-contain"
                     />
-                  </div>
+                  </div> */}
                   {/* Glow effect */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -202,7 +202,7 @@ export default function Achievements() {
               href="https://calendly.com/meenalkhandelwal55"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-white/20 w-full max-w-xs mx-auto justify-center"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-purple-700  text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-white/20 w-full max-w-xs mx-auto justify-center"
             >
               <span>Start Your Journey</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

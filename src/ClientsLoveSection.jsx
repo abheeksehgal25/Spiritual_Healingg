@@ -197,7 +197,7 @@ export default function ClientsLoveSection() {
       {/* Floating hearts */}
       <FloatingHearts />
       
-      <div className="relative w-full max-w-lg mx-auto z-10 px-2 sm:px-4 md:px-8">
+      <div className="relative w-full max-w-2xl mx-auto z-10 px-2 sm:px-4 md:px-8">
         {/* Enhanced Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -215,8 +215,8 @@ export default function ClientsLoveSection() {
             >
               ❤️
             </motion.span>
-            <h2 className="text-3xl md:text-5xl font-philosopher font-normal text-white">
-              <span className="bg-gradient-to-r from-white to-pink-200 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-5xl font-source font-bold text-white">
+              <span className="font-source font-bold ">
                 Client's Love
               </span>
             </h2>
@@ -309,39 +309,28 @@ export default function ClientsLoveSection() {
           </div>
         </motion.div>
         
-        {/* Enhanced Dots */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
-          viewport={{ once: true, amount: 0.5 }}
-          className="flex flex-wrap justify-center mt-8 gap-1 sm:gap-3 max-w-xs mx-auto"
-        >
-          {testimonials.map((_, idx) => (
-            <motion.button
-              key={idx}
-              className={`w-2 h-2 sm:w-4 sm:h-4 rounded-full border-2 border-white transition-all duration-300 ${
-                current === idx ? 'bg-white scale-125' : 'bg-transparent hover:bg-white/50'
-              }`}
-              onClick={() => setCurrent(idx)}
-              aria-label={`Go to testimonial ${idx + 1}`}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            />
-          ))}
-        </motion.div>
-        
-        {/* Progress indicator */}
-        <motion.div
-          className="flex justify-center mt-6"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <div className="text-white/70 text-sm text-center w-full">
-            {current + 1} of {testimonials.length}
-          </div>
-        </motion.div>
+        {/* Left/Right Arrow Navigation */}
+        <div className="flex justify-center items-center gap-8 mt-8">
+          <button
+            onClick={() => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+            className="p-2 rounded-full bg-white/80 hover:bg-white text-purple-700 shadow transition"
+            aria-label="Previous testimonial"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <span className="text-white/70 text-base">{current + 1} of {testimonials.length}</span>
+          <button
+            onClick={() => setCurrent((prev) => (prev + 1) % testimonials.length)}
+            className="p-2 rounded-full bg-white/80 hover:bg-white text-purple-700 shadow transition"
+            aria-label="Next testimonial"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
     </motion.section>
   );

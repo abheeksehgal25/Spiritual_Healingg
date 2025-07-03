@@ -41,15 +41,7 @@ const blogPosts = [
     readTime: "7 min read",
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop"
   },
-  {
-    id: 5,
-    title: "Crystal Healing: Harnessing the Power of Stones",
-    excerpt: "Explore how crystals can be used for healing, energy balancing, and spiritual growth. Learn which stones are best for beginners and how to use them...",
-    category: "Crystal Healing",
-    date: "March 18, 2025",
-    readTime: "7 min read",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=250&fit=crop"
-  }
+  
 ];
 
 const BlogSection = () => {
@@ -151,13 +143,15 @@ const BlogSection = () => {
                   {post.excerpt}
                 </p>
                 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="text-purple-600 font-medium text-sm hover:text-purple-700 transition-colors"
-                >
-                  Read More →
-                </motion.button>
+                <Link to="/blog">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-purple-600 font-medium text-sm hover:text-purple-700 transition-colors"
+                  >
+                    Read More →
+                  </motion.button>
+                </Link>
               </div>
             </motion.article>
           ))}

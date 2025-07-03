@@ -60,8 +60,8 @@ export default function Events() {
           viewport={{ once: true, amount: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="font-philosopher text-4xl md:text-5xl font-semibold mb-4">
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h2 className="font-philosopher text-4xl md:text-5xl font-bold mb-4">
+            <span className="bg-[#0e5c63] font-source font-bold bg-clip-text text-transparent">
               Offline Events
             </span>
           </h2>
@@ -121,14 +121,14 @@ export default function Events() {
                   </motion.div>
                   
                   {/* Floating badge */}
-                  <motion.div
+                  {/* <motion.div
                     className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center shadow-lg"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.3, delay: idx * 0.05 + 0.2 }}
                   >
                     <span className="text-white text-xs">✨</span>
-                  </motion.div>
+                  </motion.div> */}
                 </motion.div>
               ))}
             </div>
@@ -147,7 +147,7 @@ export default function Events() {
             href="https://calendly.com/meenalkhandelwal55"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full max-w-xs mx-auto justify-center"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-purple-700  text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full max-w-xs mx-auto justify-center"
           >
             <span>Book Your Event</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

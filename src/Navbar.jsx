@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from './assets/logo.png';
+import { MdPhone, MdEmail, MdAccessTime } from 'react-icons/md';
 
 const navLinks = [
   { name: 'Home', to: 'home', isScroll: true },
@@ -12,7 +13,7 @@ const navLinks = [
   { name: 'Blog', to: '/blog', isScroll: false },
 ];
 
-const orange = 'text-orange-500';
+const blue = 'text-[#0e5c63]';
 
 export default function Navbar() {
   const [active, setActive] = useState('Home');
@@ -66,15 +67,15 @@ export default function Navbar() {
       {/* Top Info Bar */}
       <div className="w-full bg-[#070b1a] text-white text-xs md:text-sm flex flex-col md:flex-row items-start justify-start px-2 md:px-8 py-1 gap-y-1 gap-x-6 font-inter z-[100]">
         <div className="flex items-center gap-1 md:gap-2">
-          <span role="img" aria-label="phone">📞</span>
+          <MdPhone className="text-[#0e5c63]" />
           <span>+91 7017094225</span>
         </div>
         <div className="flex items-center gap-1 md:gap-2">
-          <span role="img" aria-label="email">📧</span>
+          <MdEmail className="text-[#0e5c63]" />
           <span>meenalkhandelwal55@gmail.com</span>
         </div>
         <div className="flex items-center gap-1 md:gap-2">
-          <span role="img" aria-label="clock">⏰</span>
+          <MdAccessTime className="text-[#0e5c63]" />
           <span>9:30 AM - 6:30 PM</span>
         </div>
       </div>
@@ -83,11 +84,11 @@ export default function Navbar() {
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="w-full bg-gradient-to-r from-purple-100/80 via-pink-100/70 to-blue-100/80 backdrop-blur-md bg-opacity-80 flex items-center px-2 sm:px-4 md:px-12 py-2 md:py-3 shadow-sm sticky top-0 z-[100]"
+        className="w-full bg-gradient-to-r bg-white backdrop-blur-md bg-opacity-80 flex items-center px-2 sm:px-4 md:px-12 py-2 md:py-3 shadow-sm sticky top-0 z-[100]"
       >
         <div className="flex items-center w-full">
           <Link to="/">
-            <img src={logo} alt="Logo" className="h-8 w-auto md:h-12 md:w-auto object-contain" />
+            <img src={logo} alt="Logo" className="h-14 w-auto md:h-20 md:w-auto object-contain" />
           </Link>
           {/* Desktop Nav */}
           <ul className="hidden md:flex gap-8 font-semibold text-black text-base relative ml-auto justify-end">
@@ -95,14 +96,14 @@ export default function Navbar() {
               <li key={link.name}>
                 {link.isScroll ? (
                   <span
-                    className={`cursor-pointer pb-1 transition-colors duration-200 relative ${active === link.name ? `${orange}` : 'hover:text-orange-400'}`}
+                    className={`cursor-pointer pb-1 transition-colors duration-200 relative ${active === link.name ? `${blue}` : 'hover:text-[#0e5c63]'}`}
                     onClick={() => handleNavClick(link)}
                   >
                     {link.name}
                     {active === link.name && (
                       <motion.span
                         layoutId="navbar-underline"
-                        className="absolute left-0 right-0 -bottom-1 h-[2.5px] rounded bg-orange-500"
+                        className="absolute left-0 right-0 -bottom-1 h-[2.5px] rounded bg-[#0e5c63]"
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                       />
                     )}
@@ -110,14 +111,14 @@ export default function Navbar() {
                 ) : (
                   <Link
                     to={link.to}
-                    className={`cursor-pointer pb-1 transition-colors duration-200 relative ${location.pathname === link.to ? `${orange}` : 'hover:text-orange-400'}`}
+                        className={`cursor-pointer pb-1 transition-colors duration-200 relative ${location.pathname === link.to ? `${blue}` : 'hover:text-[#0e5c63]'}`}
                     onClick={() => handleNavClick(link)}
                   >
                     {link.name}
                     {location.pathname === link.to && (
                       <motion.span
                         layoutId="navbar-underline"
-                        className="absolute left-0 right-0 -bottom-1 h-[2.5px] rounded bg-orange-500"
+                          className="absolute left-0 right-0 -bottom-1 h-[2.5px] rounded bg-[#0e5c63]"
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                       />
                     )}

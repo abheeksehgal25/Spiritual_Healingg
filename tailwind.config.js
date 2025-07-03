@@ -8,6 +8,8 @@ export default {
       fontFamily: {
         philosopher: ['Philosopher', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
+        playfair: ['"Playfair Display"', 'serif'],
+        source: ['"Source Sans Pro"', 'sans-serif'],
       },
     },
   },

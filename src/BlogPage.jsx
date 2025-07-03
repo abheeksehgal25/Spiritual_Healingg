@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import image from './assets/image.svg';
 
@@ -9,6 +9,7 @@ const allBlogPosts = [
     id: 1,
     title: "Daily Tarot Reading: The Fool's Journey",
     excerpt: "Discover what the Fool card reveals about new beginnings and taking leaps of faith in your spiritual journey. This card represents innocence, spontaneity, and the courage to step into the unknown...",
+    content: "The Fool card in Tarot is a symbol of new beginnings, innocence, and adventure. It encourages you to embrace the unknown with an open heart and a sense of wonder. When this card appears, it's a sign to take a leap of faith, trust your instincts, and not be afraid of making mistakes. The journey ahead may be uncertain, but it's filled with opportunities for growth and self-discovery. Remember, every expert was once a beginner. Let go of fear and step forward with confidence!",
     category: "Tarot Reading",
     date: "March 15, 2025",
     readTime: "5 min read",
@@ -19,6 +20,7 @@ const allBlogPosts = [
     id: 2,
     title: "Yoga for Spiritual Awakening: 7 Essential Poses",
     excerpt: "Transform your practice with these powerful yoga poses designed to enhance your spiritual connection. Each pose is carefully selected to open your chakras and align your energy...",
+    content: "Yoga is a powerful tool for spiritual awakening. The following seven poses are essential for opening your chakras and aligning your energy: 1. Mountain Pose, 2. Downward Dog, 3. Warrior II, 4. Tree Pose, 5. Bridge Pose, 6. Seated Forward Bend, 7. Corpse Pose. Practice these regularly to deepen your spiritual connection and promote inner peace.",
     category: "Yoga & Meditation",
     date: "March 12, 2025",
     readTime: "8 min read",
@@ -29,6 +31,7 @@ const allBlogPosts = [
     id: 3,
     title: "Numerology: Understanding Your Life Path Number",
     excerpt: "Calculate and interpret your life path number to unlock the secrets of your soul's purpose. This ancient practice reveals the lessons you're meant to learn in this lifetime...",
+    content: "Numerology is the study of numbers and their spiritual significance. Your Life Path Number is calculated from your birth date and reveals your soul's purpose. To calculate, add all the digits of your birth date until you get a single digit. Each number has a unique meaning and offers insight into your strengths, challenges, and destiny.",
     category: "Numerology",
     date: "March 10, 2025",
     readTime: "6 min read",
@@ -39,62 +42,13 @@ const allBlogPosts = [
     id: 4,
     title: "Mudra Therapy: Healing Through Hand Gestures",
     excerpt: "Learn powerful mudras that can balance your energy, reduce stress, and promote healing. These ancient hand gestures have been used for centuries in spiritual practices...",
+    content: "Mudra therapy uses specific hand gestures to channel energy and promote healing. Common mudras include Gyan Mudra for knowledge, Prana Mudra for vitality, and Apana Mudra for detoxification. Practice these mudras daily to experience their full benefits in your spiritual and physical well-being.",
     category: "Mudra Therapy",
     date: "March 8, 2025",
     readTime: "7 min read",
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop",
     tags: ["mudra", "healing", "energy balance", "stress relief"]
   },
-  {
-    id: 5,
-    title: "Weekly Horoscope: March 10-16, 2025",
-    excerpt: "Your weekly cosmic forecast is here! Discover what the stars have in store for your zodiac sign this week. From love and career to health and spirituality...",
-    category: "Astrology",
-    date: "March 7, 2025",
-    readTime: "4 min read",
-    image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=250&fit=crop",
-    tags: ["horoscope", "weekly", "zodiac", "astrology"]
-  },
-  {
-    id: 6,
-    title: "Crystal Healing: Choosing Your First Crystal",
-    excerpt: "Begin your crystal healing journey with this comprehensive guide to selecting your first crystal. Learn about different types and their unique properties...",
-    category: "Crystal Healing",
-    date: "March 5, 2025",
-    readTime: "9 min read",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop",
-    tags: ["crystals", "healing", "energy", "spiritual tools"]
-  },
-  {
-    id: 7,
-    title: "Meditation Techniques for Beginners",
-    excerpt: "Start your meditation practice with these simple yet powerful techniques. Perfect for beginners who want to experience the benefits of mindfulness...",
-    category: "Yoga & Meditation",
-    date: "March 3, 2025",
-    readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop",
-    tags: ["meditation", "mindfulness", "beginners", "stress relief"]
-  },
-  {
-    id: 8,
-    title: "Chakra Balancing: A Complete Guide",
-    excerpt: "Learn how to balance your seven chakras for optimal health and spiritual well-being. This comprehensive guide covers each energy center...",
-    category: "Spiritual Healing",
-    date: "March 1, 2025",
-    readTime: "10 min read",
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=250&fit=crop",
-    tags: ["chakras", "energy healing", "spiritual wellness", "balance"]
-  },
-  {
-    id: 9,
-    title: "Crystal Healing: Harnessing the Power of Stones",
-    excerpt: "Explore how crystals can be used for healing, energy balancing, and spiritual growth. Learn which stones are best for beginners and how to use them...",
-    category: "Crystal Healing",
-    date: "March 18, 2025",
-    readTime: "7 min read",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=250&fit=crop",
-    tags: ["crystals", "healing", "energy", "spiritual growth"]
-  }
 ];
 
 const categories = [
@@ -113,6 +67,7 @@ const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
+  const [expandedPostId, setExpandedPostId] = useState(null);
 
   // Filter posts based on category and search
   const filteredPosts = allBlogPosts.filter(post => {
@@ -254,66 +209,128 @@ const BlogPage = () => {
           animate="visible"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
         >
-          {currentPosts.map((post) => (
-            <motion.article
-              key={post.id}
-              variants={cardVariants}
-              whileHover="hover"
-              className="bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer"
-            >
-              {/* Blog Image */}
-              <div className="relative overflow-hidden h-48">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 block"
-                  onError={e => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/400x250?text=Image+Not+Found'; }}
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-purple-600 text-white text-xs px-3 py-1 rounded-full font-medium">
-                    {post.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Blog Content */}
-              <div className="p-6">
-                <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                  <span>{post.date}</span>
-                  <span>•</span>
-                  <span>{post.readTime}</span>
-                </div>
-                
-                <h3 className="font-philosopher text-xl font-semibold text-gray-800 mb-3 group-hover:text-purple-600 transition-colors">
-                  {post.title}
-                </h3>
-                
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  {post.excerpt}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {post.tags.slice(0, 3).map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-                
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="text-purple-600 font-medium text-sm hover:text-purple-700 transition-colors"
-                >
-                  Read More →
-                </motion.button>
-              </div>
-            </motion.article>
-          ))}
+          <AnimatePresence initial={false}>
+            {expandedPostId
+              ? currentPosts
+                  .filter((post) => post.id === expandedPostId)
+                  .map((post) => {
+                    // expanded card only
+                    return (
+                      <motion.article
+                        key={post.id}
+                        layoutId={`blog-card-${post.id}`}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1.04, zIndex: 20, boxShadow: '0 8px 40px 8px rgba(80,0,120,0.18)' }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ type: 'spring', stiffness: 200, damping: 30 }}
+                        className="bg-white rounded-2xl shadow-2xl overflow-hidden group cursor-pointer ring-4 ring-purple-300 z-50 fixed top-[15%] left-[30%] -translate-x-[60%] max-w-xl w-full max-h-[80vh] flex flex-col"
+                      >
+                        {/* Blog Image */}
+                        <div className="relative overflow-hidden h-64 md:h-80 flex-shrink-0">
+                          <img
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-full object-cover transition-transform duration-500 block scale-105"
+                            onError={e => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/400x250?text=Image+Not+Found'; }}
+                          />
+                          <div className="absolute top-4 left-4">
+                            <span className="bg-purple-600 text-white text-xs px-3 py-1 rounded-full font-medium">
+                              {post.category}
+                            </span>
+                          </div>
+                        </div>
+                        {/* Blog Content (scrollable only for content) */}
+                        <div className="p-8 flex-1 overflow-y-auto">
+                          <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                            <span>{post.date}</span>
+                            <span>•</span>
+                            <span>{post.readTime}</span>
+                          </div>
+                          <h3 className="font-philosopher text-2xl font-bold text-gray-800 mb-4">
+                            {post.title}
+                          </h3>
+                          <p className="text-gray-700 text-base leading-relaxed mb-6 whitespace-pre-line">
+                            {post.content}
+                          </p>
+                          {/* Tags */}
+                          <div className="flex flex-wrap gap-2 mb-6">
+                            {post.tags.map((tag) => (
+                              <span
+                                key={tag}
+                                className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded"
+                              >
+                                #{tag}
+                              </span>
+                            ))}
+                          </div>
+                          <button
+                            className="absolute top-4 left-4 z-20 bg-white/90 hover:bg-purple-100 text-purple-700 font-semibold px-4 py-2 rounded-full shadow transition"
+                            onClick={() => setExpandedPostId(null)}
+                          >
+                            ← Back
+                          </button>
+                        </div>
+                      </motion.article>
+                    );
+                  })
+              : currentPosts.map((post) => (
+                  <motion.article
+                    key={post.id}
+                    layoutId={`blog-card-${post.id}`}
+                    variants={cardVariants}
+                    whileHover="hover"
+                    className="bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer relative"
+                  >
+                    {/* Blog Image */}
+                    <div className="relative overflow-hidden h-48">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 block"
+                        onError={e => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/400x250?text=Image+Not+Found'; }}
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-purple-600 text-white text-xs px-3 py-1 rounded-full font-medium">
+                          {post.category}
+                        </span>
+                      </div>
+                    </div>
+                    {/* Blog Content */}
+                    <div className="p-6">
+                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                        <span>{post.date}</span>
+                        <span>•</span>
+                        <span>{post.readTime}</span>
+                      </div>
+                      <h3 className="font-philosopher text-xl font-semibold text-gray-800 mb-3 group-hover:text-purple-600 transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                        {post.excerpt}
+                      </p>
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {post.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="text-purple-600 font-medium text-sm hover:text-purple-700 transition-colors"
+                        onClick={() => setExpandedPostId(post.id)}
+                      >
+                        Read More →
+                      </motion.button>
+                    </div>
+                  </motion.article>
+                ))}
+          </AnimatePresence>
         </motion.div>
 
         {/* Pagination */}

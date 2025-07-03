@@ -136,8 +136,8 @@ const InstagramSection = () => {
           variants={itemVariants}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-5xl font-philosopher font-normal mb-4">
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-5xl font-philosopher font-bold mb-4">
+            <span className="bg-[#0e5c63] font-source bg-clip-text text-transparent">
               Follow Our Journey
             </span>
           </h2>
@@ -148,7 +148,7 @@ const InstagramSection = () => {
 
         {/* Instagram Card */}
         <motion.div 
-          className="w-full rounded-3xl bg-white/80 backdrop-blur-md shadow-2xl p-6 md:p-12 border border-white/20"
+          className="w-full rounded-3xl bg-white/60 backdrop-blur-md shadow-2xl p-6 md:p-12 border border-white/20"
           variants={itemVariants}
           whileHover={{ 
             y: -8,
@@ -167,7 +167,7 @@ const InstagramSection = () => {
               whileHover="hover"
             >
               <div className="relative">
-                <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 p-1">
+                <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 p-1">
                   <div className="w-full h-full rounded-full bg-white p-1">
                     <motion.img 
                       src={profileImg} 
@@ -210,7 +210,7 @@ const InstagramSection = () => {
                   whileHover="hover"
                   whileTap="tap"
                 >
-                  <button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-full px-6 py-2 text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <button className="bg-gradient-to-r from-purple-500 to-purple-700  text-white font-semibold rounded-full px-6 py-2 text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                     Follow
                   </button>
                 </motion.a>

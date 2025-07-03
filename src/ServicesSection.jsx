@@ -84,7 +84,7 @@ function ServiceCard({ title, icon, idx, price }) {
         )}
         <motion.a 
           href="https://calendly.com/meenalkhandelwal55"
-          className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-5 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full max-w-xs mx-auto justify-center"
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-purple-700 text-white px-5 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full max-w-xs mx-auto justify-center"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -151,7 +151,7 @@ export default function ServicesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-philosopher font-normal text-white mb-4">
-            <span className="bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+            <span className="font-source font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
               Our Services
             </span>
           </h2>
@@ -171,7 +171,7 @@ export default function ServicesSection() {
             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
             className="flex items-center gap-4 mb-6"
           >
-            <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full flex items-center justify-center">
               <img src={TarrotIcon} alt="Tarot" className="w-8 h-8" />
             </div>
             <h3 className="text-2xl md:text-3xl text-white font-philosopher font-normal">Tarot Sessions</h3>
@@ -192,7 +192,7 @@ export default function ServicesSection() {
             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
             className="flex items-center gap-4 mb-6"
           >
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full flex items-center justify-center">
               <img src={numerologyIcon} alt="Numerology" className="w-8 h-8" />
             </div>
             <h3 className="text-2xl md:text-3xl text-white font-philosopher font-normal">Numerology Session</h3>
@@ -213,7 +213,7 @@ export default function ServicesSection() {
             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
             className="flex items-center gap-4 mb-6"
           >
-            <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full flex items-center justify-center">
               <img src={yogaIcon} alt="Yoga" className="w-8 h-8" />
             </div>
             <h3 className="text-2xl md:text-3xl text-white font-philosopher font-normal">Yoga Session</h3>
@@ -234,7 +234,7 @@ export default function ServicesSection() {
             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
             className="flex items-center gap-4 mb-6"
           >
-            <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full flex items-center justify-center">
               <img src={comboIcon} alt="Special Combo" className="w-8 h-8" />
             </div>
             <h3 className="text-2xl md:text-3xl text-white font-philosopher font-normal">Special Combo Offers</h3>
@@ -258,7 +258,7 @@ export default function ServicesSection() {
             href="https://calendly.com/meenalkhandelwal55"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 text-lg md:text-xl shadow-2xl hover:shadow-purple-500/25 transform hover:-translate-y-1"
+            className="bg-gradient-to-r from-purple-500 to-purple-700  text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 text-lg md:text-xl shadow-2xl hover:shadow-purple-500/25 transform hover:-translate-y-1"
           >
             Explore All Sessions
           </motion.a>

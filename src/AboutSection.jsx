@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import bg from './assets/background1.jpg';
-import photo from './assets/photo.png';
+import photo from './assets/about.jpeg';
 
 export default function AboutSection() {
   return (
@@ -49,8 +49,8 @@ export default function AboutSection() {
           transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-5xl font-philosopher font-normal mb-4">
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-5xl font-source font-bold text-[#0e5c63] text-center mb-4">
+            <span className="font-source font-bold text-[#0e5c63] text-center">
               About Meenal Khandelwal
             </span>
           </h2>
@@ -62,9 +62,9 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
             transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
-            className="text-center font-inter font-normal text-gray-700 max-w-4xl mx-auto mb-8 text-lg md:text-xl leading-relaxed"
+            className="text-center font-inter font-normal text-[#555547] text-[18px] max-w-4xl mb-8 leading-relaxed mx-auto"
           >
-            I, a believer in cosmic powers and a world beyond the one we live in, am here to share my learnings with you and guide you along the path of this beautiful journey called Life.
+            A believer in cosmic powers and a world beyond the one we live in, am here to share my learnings with you and guide you along the path of this beautiful journey called Life.
           </motion.p>
         </motion.div>
         
@@ -76,7 +76,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-            className="flex-shrink-0 w-32 h-32 sm:w-48 sm:h-48 mx-auto lg:mx-0 relative group mb-6"
+            className="flex-shrink-0 w-56 h-64 sm:w-72 sm:h-96 mx-auto lg:mx-0 relative group mb-6"
           >
             {/* Decorative border */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl p-1 transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
@@ -84,13 +84,13 @@ export default function AboutSection() {
                 <img 
                   src={photo} 
                   alt="Meenal Khandelwal" 
-                  className="w-full h-full rounded-xl shadow-2xl object-contain bg-white transform -rotate-3 group-hover:rotate-0 transition-transform duration-500" 
+                  className="w-full h-full rounded-xl shadow-2xl object-cover bg-white transform -rotate-3 group-hover:rotate-0 transition-transform duration-500" 
                 />
               </div>
             </div>
             
             {/* Floating stats */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
@@ -98,7 +98,7 @@ export default function AboutSection() {
             >
               <div className="text-lg sm:text-2xl font-bold leading-none">15+</div>
               <div className="text-[10px] sm:text-xs">Years</div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
           
           {/* Enhanced Text content */}
@@ -110,7 +110,7 @@ export default function AboutSection() {
             className="flex-1 w-full"
           >
             <motion.h3 
-              className="text-2xl md:text-3xl font-semibold mb-6 text-center lg:text-left bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+              className="text-2xl md:text-3xl font-source font-bold text-[#0e5c63] text-left mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -124,12 +124,12 @@ export default function AboutSection() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="space-y-6"
             >
-              <p className="text-gray-700 text-center lg:text-left text-base md:text-lg leading-relaxed">
-                Welcome! I'm Meenal Khandelwal — Yoga Teacher, Mudra Therapist, AstroYoga Guide, and Tarot Card Reader. My mission is to help you align your body, mind, and spirit through empowering, sacred practices. Whether you seek clarity, healing, or inner peace, my sessions gently guide you back to your true self — one breath, one mudra, one insight at a time.
+              <p className="text-[#555547] text-[18px] text-center lg:text-left leading-relaxed">
+              Welcome! I'm Meenal Khandelwal, a Yoga Teacher, Mudra Therapist, AstroYoga Guide, and Tarot Card Reader. My mission is to help you align your body, mind, and spirit through empowering, sacred practices. Whether you seek clarity, healing, or inner peace, my sessions gently guide you back to your true self, one breath, one mudra, one insight at a time.
               </p>
               
-              <p className="text-gray-700 text-center lg:text-left text-base md:text-lg leading-relaxed">
-                With years of experience as a Tarot Card Reader, Astrologer, Numerologist, and Akashic Record Reader, I blend ancient wisdom with intuitive guidance. My spiritual journey began with my father, a Reiki Grand Master, whose teachings continue to inspire my work today.
+              <p className="text-[#555547] text-[18px] text-center lg:text-left leading-relaxed">
+                With years of experience as a Tarot Card Reader, Astrologer and Numerologist, I blend ancient wisdom with intuitive guidance.
               </p>
             </motion.div>
             
@@ -145,26 +145,26 @@ export default function AboutSection() {
                 whileHover={{ scale: 1.02, y: -5 }}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
+                  <div className="w-12 h-12 min-w-[56px] bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-xl font-bold font-mono">
                     15+
                   </div>
                   <div>
-                    <div className="text-sm text-gray-600">Years Of</div>
+                    <div className="text-sm text-gray-800">Years Of</div>
                     <div className="font-semibold text-lg text-gray-800">Professional Healing</div>
                   </div>
                 </div>
               </motion.div>
               
               <motion.div 
-                className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-200 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200 shadow-lg hover:shadow-xl transition-all duration-300"
                 whileHover={{ scale: 1.02, y: -5 }}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
+                  <div className="w-12 h-12 min-w-[56px] bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-xl font-bold font-mono">
                     500+
                   </div>
                   <div>
-                    <div className="text-sm text-gray-600">Happy</div>
+                    <div className="text-sm text-gray-800">Happy</div>
                     <div className="font-semibold text-lg text-gray-800">Clients Served</div>
                   </div>
                 </div>
@@ -180,7 +180,7 @@ export default function AboutSection() {
             >
               <motion.a 
                 href="#services"
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 inline-flex items-center gap-2 w-full max-w-xs mx-auto lg:mx-0 justify-center"
+                className="bg-gradient-to-r from-purple-500 to-purple-700  text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 inline-flex items-center gap-2 w-full max-w-xs mx-auto lg:mx-0 justify-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
